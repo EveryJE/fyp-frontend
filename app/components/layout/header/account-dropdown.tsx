@@ -1,22 +1,8 @@
 // src/components/Header/AccountDropdown.tsx
 import React from 'react';
 import ThemeToggle from './theme-toggle';
-import { useAuth } from '~/components/auth/auth-context';
-import { Link } from '@remix-run/react';
 
 const AccountDropdown: React.FC = () => {
-  const { user, isAuthenticated, logout } = useAuth();
-  if (!isAuthenticated || !user) {
-    return (
-      <Link
-        to="/auth"
-        className="py-2 px-3 rounded-lg text-sm text-white bg-blue-600 hover:bg-blue-700"
-      >
-        Sign in
-      </Link>
-    );
-  }
-
   return (
     <div className="hs-dropdown inline-flex [--strategy:absolute] [--auto-close:inside] [--placement:bottom-right] relative text-start">
       <button
@@ -26,7 +12,7 @@ const AccountDropdown: React.FC = () => {
       >
         <img
           className="shrink-0 size-8 rounded-full"
-          src={user.avatar || "https://images.unsplash.com/photo-1659482633369-9fe69af50bfb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=3&w=320&h=320&q=80"}
+          src="https://images.unsplash.com/photo-1659482633369-9fe69af50bfb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=3&w=320&h=320&q=80"
           alt="Avatar"
         />
       </button>
@@ -38,24 +24,23 @@ const AccountDropdown: React.FC = () => {
         aria-labelledby="hs-dnad"
       >
         <div className="py-2 px-3.5">
-          <span className="font-medium text-gray-800 dark:text-neutral-300">{user.name}</span>
-          <p className="text-sm text-gray-500 dark:text-neutral-500">{user.email}</p>
-          <p className="text-xs text-gray-400 dark:text-neutral-500 capitalize">{user.role}</p>
+          <span className="font-medium text-gray-800 dark:text-neutral-300">James Collison</span>
+          <p className="text-sm text-gray-500 dark:text-neutral-500">jamescollison@site.com</p>
         </div>
         <div className="px-4 py-2 border-t border-gray-200 dark:border-neutral-800">
           <ThemeToggle />
         </div>
         <div className="p-1 border-t border-gray-200 dark:border-neutral-800">
           {/* Links like Profile, Settings, Log out */}
-          <Link className="flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-gray-600 hover:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-800" to="#">
+          <a className="flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-gray-600 hover:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-800" href="#">
             Profile
-          </Link>
-          <Link className="flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-gray-600 hover:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-800" to="#">
+          </a>
+          <a className="flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-gray-600 hover:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-800" href="#">
             Settings
-          </Link>
-          <button onClick={logout} className="w-full text-left flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-gray-600 hover:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-800">
+          </a>
+          <a className="flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-gray-600 hover:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-800" href="#">
             Log out
-          </button>
+          </a>
         </div>
       </div>
     </div>

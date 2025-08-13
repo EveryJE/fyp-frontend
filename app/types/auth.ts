@@ -30,7 +30,6 @@ export interface LoginCredentials {
 export interface RegisterData {
   email: string;
   password: string;
-  confirmPassword?: string; // For form validation only
   name: string;
   role: UserRole;
   studentId?: string;
@@ -48,7 +47,6 @@ export interface AuthContextType {
   login: (credentials: LoginCredentials) => Promise<void>;
   register: (data: RegisterData) => Promise<void>;
   logout: () => Promise<void>;
-  continueAsGuest: (name?: string) => void;
   clearError: () => void;
 }
 

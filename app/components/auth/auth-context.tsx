@@ -179,19 +179,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     dispatch({ type: 'CLEAR_ERROR' });
   };
 
-  const continueAsGuest = (name?: string): void => {
-    const guestUser: User = {
-      id: 'guest',
-      email: 'guest@example.com',
-      name: name || 'Guest',
-      role: 'guest',
-      createdAt: new Date(),
-      lastLogin: new Date(),
-    };
-    localStorage.setItem('user', JSON.stringify(guestUser));
-    dispatch({ type: 'LOGIN_SUCCESS', payload: guestUser });
-  };
-
   const value: AuthContextType = {
     user: state.user,
     isAuthenticated: state.isAuthenticated,
@@ -200,7 +187,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     login,
     register,
     logout,
-    continueAsGuest,
     clearError,
   };
 
