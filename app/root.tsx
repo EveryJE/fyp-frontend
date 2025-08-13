@@ -5,6 +5,7 @@ import {
   Scripts,
   ScrollRestoration,
   useLoaderData,
+  useLocation,
 } from "@remix-run/react";
 import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
 import "./tailwind.css";
@@ -14,9 +15,9 @@ import {
   PreventFlashOnWrongTheme,
 } from "remix-themes";
 import { themeSessionResolver } from "./sessions.server";
+import { AuthProvider } from "~/components/auth/auth-context";
 import clsx from "clsx";
 import { useEffect } from "react";
-import { useLocation } from "@remix-run/react";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -53,11 +54,12 @@ function App() {
     const initPreline = async () => {
       await loadPreline();
 
+      const anyGlobal = globalThis as unknown as { HSStaticMethods?: { autoInit?: () => void } };
       if (
-        globalThis.HSStaticMethods &&
-        typeof globalThis.HSStaticMethods.autoInit === "function"
+        anyGlobal?.HSStaticMethods &&
+        typeof anyGlobal.HSStaticMethods.autoInit === "function"
       ) {
-        globalThis.HSStaticMethods.autoInit();
+        anyGlobal.HSStaticMethods.autoInit();
       }
     };
 
@@ -75,7 +77,7 @@ function App() {
         <PreventFlashOnWrongTheme ssrTheme={Boolean(data.theme)} />
         <Links />
       </head>
-      <body>
+      <body className="selection:bg-emerald-600 selection:text-white dark:selection:bg-emerald-800">
         <Outlet />
         <ScrollRestoration />
         <Scripts />
@@ -88,7 +90,9 @@ export default function AppWithProviders() {
   const data = useLoaderData<typeof loader>();
   return (
     <ThemeProvider specifiedTheme={data.theme} themeAction="/action/set-theme">
-      <App />
+      <AuthProvider>
+        <App />
+      </AuthProvider>
     </ThemeProvider>
   );
 }

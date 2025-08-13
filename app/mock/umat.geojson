@@ -1,0 +1,416 @@
+{
+  "id": 1,
+  "name": "University of Mines and Technology (UMaT), Tarkwa",
+  "description": "GeoJSON data for the UMaT campus, including buildings, routes, and points of interest, ready for 3D rendering.",
+  "address": "Tarkwa, Western Region, Ghana",
+  "location": {
+    "latitude": 5.298,
+    "longitude": -2.001
+  },
+  "campus_features": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "UMaT Campus Boundary",
+          "feature_type": "campus_boundary"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [-2.00239, 5.29415],
+              [-2.00227, 5.29424],
+              [-1.99967, 5.29805],
+              [-1.99929, 5.29997],
+              [-1.99981, 5.30045],
+              [-2.00072, 5.30036],
+              [-2.00156, 5.30049],
+              [-2.00249, 5.30026],
+              [-2.00287, 5.3006],
+              [-2.00412, 5.29968],
+              [-2.00454, 5.29838],
+              [-2.0041, 5.29563],
+              [-2.00239, 5.29415]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "New Administration Block",
+          "feature_type": "building",
+          "levels": 3,
+          "height": 15
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [-1.99976, 5.29856],
+              [-1.99952, 5.29923],
+              [-1.99963, 5.2993],
+              [-1.9997, 5.299],
+              [-1.99976, 5.29856]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "UMaT Auditorium",
+          "feature_type": "building",
+          "levels": 2,
+          "height": 12
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [-2.00108, 5.29888],
+              [-2.0005, 5.29872],
+              [-2.0003, 5.2992],
+              [-2.0009, 5.29938],
+              [-2.00108, 5.29888]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "UMaT Library",
+          "feature_type": "building",
+          "levels": 2,
+          "height": 10
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [-2.0012, 5.2984],
+              [-2.0009, 5.29835],
+              [-2.0008, 5.2986],
+              [-2.0011, 5.29865],
+              [-2.0012, 5.2984]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Computer Science and Engineering Department",
+          "feature_type": "building",
+          "levels": 2,
+          "height": 10
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [-2.0007, 5.298],
+              [-2.0003, 5.2979],
+              [-2.0002, 5.2983],
+              [-2.0006, 5.2984],
+              [-2.0007, 5.298]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Geological Engineering Department",
+          "feature_type": "building",
+          "levels": 2,
+          "height": 10
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [-2.0006, 5.2976],
+              [-2.0002, 5.2975],
+              [-2.0001, 5.2978],
+              [-2.0005, 5.2979],
+              [-2.0006, 5.2976]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "UMaT Clinic",
+          "feature_type": "building",
+          "levels": 1,
+          "height": 4
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [-2.0009, 5.29815],
+              [-2.0008, 5.2981],
+              [-2.00075, 5.29825],
+              [-2.00085, 5.2983],
+              [-2.0009, 5.29815]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "CMH Canteen",
+          "feature_type": "building",
+          "levels": 1,
+          "height": 5
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [-2.0021, 5.2982],
+              [-2.0019, 5.29815],
+              [-2.0018, 5.2984],
+              [-2.002, 5.29845],
+              [-2.0021, 5.2982]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "JCR",
+          "feature_type": "building",
+          "levels": 2,
+          "height": 8
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [-2.0018, 5.2981],
+              [-2.0014, 5.298],
+              [-2.0013, 5.2983],
+              [-2.0017, 5.2984],
+              [-2.0018, 5.2981]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Kofi Tetten Hall",
+          "feature_type": "building",
+          "levels": 3,
+          "height": 12
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [-2.0021, 5.2973],
+              [-2.0016, 5.2972],
+              [-2.0015, 5.2976],
+              [-2.002, 5.2977],
+              [-2.0021, 5.2973]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": { "name": "Main Athletic Field", "feature_type": "park" },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [-2.0018, 5.2977],
+              [-2.0014, 5.2976],
+              [-2.0015, 5.2981],
+              [-2.0019, 5.2982],
+              [-2.0018, 5.2977]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "SRC Basketball Court",
+          "feature_type": "park"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [-2.0017, 5.2992],
+              [-2.0015, 5.2991],
+              [-2.0014, 5.2994],
+              [-2.0016, 5.2995],
+              [-2.0017, 5.2992]
+            ]
+          ]
+        }
+      }
+    ]
+  },
+  "campus_routes": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": { "type": "road" },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-2.0022, 5.2975],
+            [-2.0018, 5.2974],
+            [-2.0015, 5.29735],
+            [-2.0012, 5.2973],
+            [-2.0008, 5.29735],
+            [-2.0005, 5.2974],
+            [-2.0002, 5.2976],
+            [-1.9999, 5.2979],
+            [-1.9998, 5.2982]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": { "type": "road" },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-2.0012, 5.2973],
+            [-2.00125, 5.298],
+            [-2.0013, 5.2987],
+            [-2.0012, 5.2991],
+            [-2.001, 5.2994],
+            [-2.0005, 5.2993],
+            [-2.0002, 5.2992]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": { "type": "walkway" },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-2.0005, 5.2978],
+            [-2.0007, 5.298],
+            [-2.0008, 5.2982],
+            [-2.0007, 5.2984],
+            [-2.0006, 5.2985],
+            [-2.0004, 5.2988],
+            [-2.0001, 5.29875],
+            [-2.0, 5.2987]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": { "type": "walkway" },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-2.0019, 5.2983],
+            [-2.0017, 5.29825],
+            [-2.0015, 5.2982],
+            [-2.0012, 5.2983],
+            [-2.001, 5.2984],
+            [-2.0008, 5.2982]
+          ]
+        }
+      }
+    ]
+  },
+  "pois": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "New Administration Block",
+          "type": "administration",
+          "floor": 0
+        },
+        "geometry": { "type": "Point", "coordinates": [-1.99965, 5.2989] }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "UMaT Auditorium",
+          "type": "auditorium",
+          "floor": 0
+        },
+        "geometry": { "type": "Point", "coordinates": [-2.0007, 5.299] }
+      },
+      {
+        "type": "Feature",
+        "properties": { "name": "UMaT Library", "type": "library", "floor": 0 },
+        "geometry": { "type": "Point", "coordinates": [-2.001, 5.2985] }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Computer Science and Engineering Dept",
+          "type": "department",
+          "floor": 0
+        },
+        "geometry": { "type": "Point", "coordinates": [-2.0005, 5.2981] }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Geological Engineering Dept",
+          "type": "department",
+          "floor": 0
+        },
+        "geometry": { "type": "Point", "coordinates": [-2.0004, 5.2977] }
+      },
+      {
+        "type": "Feature",
+        "properties": { "name": "UMaT Clinic", "type": "clinic", "floor": 0 },
+        "geometry": { "type": "Point", "coordinates": [-2.0008, 5.2982] }
+      },
+      {
+        "type": "Feature",
+        "properties": { "name": "CMH Canteen", "type": "canteen", "floor": 0 },
+        "geometry": { "type": "Point", "coordinates": [-2.002, 5.2983] }
+      },
+      {
+        "type": "Feature",
+        "properties": { "name": "JCR", "type": "common_room", "floor": 0 },
+        "geometry": { "type": "Point", "coordinates": [-2.0016, 5.2982] }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Kofi Tetten Hall",
+          "type": "hostel",
+          "floor": 0
+        },
+        "geometry": { "type": "Point", "coordinates": [-2.0018, 5.2974] }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "SRC Basketball Court",
+          "type": "sports_facility",
+          "floor": 0
+        },
+        "geometry": { "type": "Point", "coordinates": [-2.0016, 5.2993] }
+      }
+    ]
+  }
+}
