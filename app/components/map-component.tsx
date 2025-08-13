@@ -13,7 +13,7 @@ import { FloorSelector } from "./floor-selector";
 import { FloorUpDownControl } from "./floor-up-down-control";
 import { IndoorMapGeoJSON } from "~/types/geojson";
 import DemoBanner from "./demo-banner";
-import OIMLogo from "../controls/oim-logo";
+// import OIMLogo from "../controls/oim-logo";
 import { Theme, useTheme } from "remix-themes";
 import "~/maplibre.css";
 
@@ -68,7 +68,7 @@ export default function MapComponent() {
       );
     }
 
-    map.addControl(new OIMLogo());
+    // map.addControl(new OIMLogo());
 
     return () => {
       map.remove();
@@ -86,7 +86,7 @@ export default function MapComponent() {
       )}
 
       <div ref={mapContainer} className="size-full" />
-      <DemoBanner />
+      {/* <DemoBanner /> */}
     </div>
   );
 }

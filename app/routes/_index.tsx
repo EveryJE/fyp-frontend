@@ -1,32 +1,31 @@
-import type { MetaFunction } from "@remix-run/node";
-import MapComponent from "~/components/map-component";
-import { Analytics } from "@vercel/analytics/remix";
-export const meta: MetaFunction = () => {
-  return [
-    { title: "OpenIndoorMaps" },
-    {
-      name: "description",
-      content:
-        "OpenIndoorMaps is a community-based tool that helps people navigate large indoor spaces like malls, airports, hospitals, and universities. Collaborate and add your building to help others find their way.",
-    },
-  ];
-};
+import React from 'react'
+import ChatContainer from '~/components/chat/chat-container'
+import Header from '~/components/layout/header/header'
+import Sidebar from '~/components/layout/sidebar/sidebar'
+import { GridPattern } from '~/components/magicui/grid-pattern'
+import { cn } from '~/lib/utils'
 
-export default function Index() {
+export default function home() {
   return (
-    <div className="relative flex h-svh items-center justify-center">
-      <Analytics />
-      <MapComponent />
-
-      {/* Preline Test Link */}
-      <div className="absolute top-4 right-4 z-10">
-        <a
-          href="/preline-test"
-          className="inline-flex items-center rounded-lg bg-blue-600 px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
-          Test Preline
-        </a>
-      </div>
-    </div>
-  );
+     <div>
+            <GridPattern
+                width={30}
+                height={30}
+                x={-1}
+                y={-1}   
+                strokeDasharray={"4 2"}
+                className={cn(
+                    "[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]",
+                    "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12",
+                )}
+            />
+            <div className="dark:bg-neutral-800">
+                <Sidebar/>
+                <main className="md:ps-65 md:hs-overlay-minified:ps-13 transition-all duration-300 pb-4 h-screen flex flex-col">
+                    <Header />
+                    <ChatContainer />
+                </main>
+            </div>
+        </div>
+  )
 }
