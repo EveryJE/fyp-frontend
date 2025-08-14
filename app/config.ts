@@ -8,7 +8,7 @@ const config = {
     zoom: 16,
     bearing: -15,
     pitch: 45,
-    maxBounds :[[-2.00454, 5.29415], [-1.99929, 5.30060] 
+    maxBounds :[[-2.00454, 5.29415], [-1.98929, 5.30060] 
     ]
   } as maplibregl.MapOptions,
   mapStyles: {
