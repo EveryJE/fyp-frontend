@@ -1,8 +1,8 @@
 import type { MetaFunction } from "@remix-run/node";
 import MapComponent from "~/components/map-component";
 import { Analytics } from "@vercel/analytics/remix";
-import Splitter from "~/components/ui/splitter";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
 export const meta: MetaFunction = () => {
   return [
     { title: "Umap" },
@@ -13,19 +13,32 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-
-
-
-
 export default function Index() {
+  const [isVertical, setIsVertical] = useState(false); // Default to false (horizontal) on server
 
   useEffect(() => {
-    // Initialize Preline's HSSplit after component mounts
-    if (window.HSStaticMethods) {
-      window.HSStaticMethods.autoInit(['layoutSplitter']);
-    } else {
-      console.error('Preline HSStaticMethods not found. Ensure Preline is loaded.');
-    }
+    // Only runs client-side
+    setIsVertical(window.innerWidth < 640);
+
+    // Initialize Preline's HSSplit
+    const initPreline = () => {
+      if (window.HSStaticMethods) {
+        window.HSStaticMethods.autoInit(['layoutSplitter']);
+      } else {
+        console.error('Preline HSStaticMethods not found. Ensure Preline is loaded.');
+      }
+    };
+
+    initPreline();
+
+    // Reinitialize on window resize
+    const handleResize = () => {
+      setIsVertical(window.innerWidth < 640);
+      initPreline();
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   // Splitter configuration
@@ -62,39 +75,35 @@ export default function Index() {
     verticalSplitterClasses: 'relative flex border-t border-gray-200 dark:border-neutral-700',
   };
 
-
-
-
   return (
-
-
-    <div data-hs-layout-splitter={JSON.stringify(splitterConfig)}>
-      <div
-        className="flex flex-col sm:flex-row border border-gray-200 rounded-lg h-[svh] dark:border-neutral-700"
-        data-hs-layout-splitter-horizontal-group=""
-        data-hs-layout-splitter-vertical-group=""
-      >
+    <div className="h-screen min-h-screen">
+      <div data-hs-layout-splitter={JSON.stringify(splitterConfig)}>
         <div
-          className="overflow-hidden h-full"
-          data-hs-layout-splitter-item="40.0"
-          style={{ flex: '40 1 0' }}
+          className="flex flex-col sm:flex-row border border-gray-200 rounded-lg h-screen min-h-screen dark:border-neutral-700 overflow-hidden"
+          data-hs-layout-splitter-horizontal-group={isVertical ? null : ""}
+          data-hs-layout-splitter-vertical-group={isVertical ? "" : null}
         >
-          <div className="flex items-center justify-center h-full p-3 text-gray-800 dark:text-neutral-200">
-            Top
+          <div
+            className="overflow-auto h-full"
+            data-hs-layout-splitter-item="40.0"
+            style={{ flex: '40 1 0' }}
+          >
+            <div className="flex items-center justify-center h-full p-3 text-gray-800 dark:text-neutral-200">
+              Top
+            </div>
           </div>
-        </div>
-        <div
-          className="overflow-hidden h-full"
-          data-hs-layout-splitter-item="60.0"
-          style={{ flex: '60 1 0' }}
-        >
-          <div className="relative  flex h-svh items-center justify-center">
-            <Analytics />
-            <MapComponent />
+          <div
+            className="overflow-auto h-full"
+            data-hs-layout-splitter-item="60.0"
+            style={{ flex: '60 1 0' }}
+          >
+            <div className="relative h-full w-full flex items-center justify-center">
+              <Analytics />
+              <MapComponent />
+            </div>
           </div>
         </div>
       </div>
     </div>
-
   );
 }
