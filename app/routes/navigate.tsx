@@ -98,7 +98,7 @@ export default function Index() {
             style={{ flex: '60 1 0' }}
           >
             <div className="relative h-full w-full flex items-center justify-center">
-              <Analytics />
+              {/* <Analytics /> */}
               <MapComponent />
             </div>
           </div>
