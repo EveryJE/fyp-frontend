@@ -15,7 +15,10 @@ export default function guest() {
     },
     {
       text: "Navigation",
-    },
+    }
+  ];
+  const wordsCont = [
+
     {
       text: "with",
     },
@@ -59,11 +62,11 @@ export default function guest() {
 
 
       <div className="relative  overflow-hidden before:absolute before:top-0 before:start-1/2 before:bg-[url('https://preline.co/assets/svg/examples/squared-bg-element.svg')] dark:before:bg-[url('https://preline.co/assets/svg/examples-dark/squared-bg-element.svg')] before:bg-no-repeat before:bg-top before:size-full before:-z-1 before:transform before:-translate-x-1/2">
-       
+
 
         <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-10">
-        
-         {/* <div className="w-full   flex mt-10 p-5 items-center justify-center">  <a
+
+          {/* <div className="w-full   flex mt-10 p-5 items-center justify-center">  <a
           className="shrink-0  inline-flex justify-center items-center h-9 rounded-lg text-xl font-semibold hover:scale-105 transition-all duration-300  "
           href="/"
           aria-label="Umap"
@@ -73,7 +76,7 @@ export default function guest() {
           <span className='text-[#FFCA28]'>a</span>
           <span className='text-[#2E7D32]'>p</span>
         </a></div> */}
-        
+
           {/* Announcement Banner */}
           <div className="flex justify-center">
             <a className="inline-flex items-center gap-x-2 bg-white border border-gray-200 text-xs text-gray-600 p-2 px-3 rounded-full transition hover:border-gray-300 focus:outline-none focus:border-gray-300 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:hover:border-neutral-600 dark:focus:border-neutral-600" href="#">
@@ -89,11 +92,13 @@ export default function guest() {
           {/* End Announcement Banner */}
 
           {/* Title */}
-          <div className="mt-5 max-w-xl text-center mx-auto">
-            <h1 className="block font-bold text-gray-800 text-4xl md:text-5xl lg:text-6xl dark:text-neutral-200">
-                   <TypewriterEffectSmooth words={words} />
+          <div className="flex flex-col items-center justify-center h-[40rem]  ">
+            <p className="text-neutral-600 dark:text-neutral-200 text-xs sm:text-base  ">
+              The road to freedom starts from here
+            </p>
+            <TypewriterEffectSmooth words={words} />
+            <TypewriterEffectSmooth words={wordsCont} />
 
-            </h1>
           </div>
           {/* End Title */}
 
