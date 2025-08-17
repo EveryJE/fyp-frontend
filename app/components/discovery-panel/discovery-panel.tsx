@@ -21,6 +21,7 @@ export default function DiscoveryPanel() {
   const [selectedPOI, setSelectedPOI] = useState<POI | null>(null);
   const { indoorDirections } = useDirections(map);
   const indoorGeocoder = useIndoorGeocoder();
+  
 
   indoorDirections?.loadMapData(
     building.indoor_routes as GeoJSON.FeatureCollection,
@@ -50,6 +51,7 @@ export default function DiscoveryPanel() {
   }
 
   useEffect(() => {
+
     const handleMapClick = (
       event: MapMouseEvent & {
         features?: MapGeoJSONFeature[];
