@@ -23,7 +23,9 @@ export default defineConfig({
     tailwindcss(),
     tsconfigPaths(),
   ],
+  
   ssr: {
     noExternal: ["maplibre-gl", "@maplibre/*"],
   },
+  
 });
