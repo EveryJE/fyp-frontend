@@ -24,16 +24,16 @@ const TimetableCalendar = () => {
 
     return (
 
-        <div className="w-full dark:bg-neutral-800">
-            <div className="border border-gray-200 px-4 dark:border-neutral-700">
+        <div className="w-full dark:bg-slate-800">
+            <div className="border border-gray-200 px-4 dark:border-slate-700">
                 <nav className="flex gap-x-2 " aria-label="Tabs" role="tablist" aria-orientation="horizontal">
-                    <button type="button" className="hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600 py-4 px-1 inline-flex items-center gap-x-2 border-b-2 border-transparent text-sm whitespace-nowrap text-gray-500 hover:text-blue-600 focus:outline-hidden focus:text-blue-600 disabled:opacity-50 disabled:pointer-events-none dark:text-neutral-400 dark:hover:text-blue-500 dark:focus:text-blue-500 active" id="basic-tabs-item-1" aria-selected="true" data-hs-tab="#basic-tabs-1" aria-controls="basic-tabs-1" role="tab">
+                    <button type="button" className="hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600 py-4 px-1 inline-flex items-center gap-x-2 border-b-2 border-transparent text-sm whitespace-nowrap text-gray-500 hover:text-blue-600 focus:outline-hidden focus:text-blue-600 disabled:opacity-50 disabled:pointer-events-none dark:text-slate-400 dark:hover:text-blue-500 dark:focus:text-blue-500 active" id="basic-tabs-item-1" aria-selected="true" data-hs-tab="#basic-tabs-1" aria-controls="basic-tabs-1" role="tab">
                         Days
                     </button>
-                    <button type="button" className="hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600 py-4 px-1 inline-flex items-center gap-x-2 border-b-2 border-transparent text-sm whitespace-nowrap text-gray-500 hover:text-blue-600 focus:outline-hidden focus:text-blue-600 disabled:opacity-50 disabled:pointer-events-none dark:text-neutral-400 dark:hover:text-blue-500 dark:focus:text-blue-500" id="basic-tabs-item-2" aria-selected="false" data-hs-tab="#basic-tabs-2" aria-controls="basic-tabs-2" role="tab">
+                    <button type="button" className="hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600 py-4 px-1 inline-flex items-center gap-x-2 border-b-2 border-transparent text-sm whitespace-nowrap text-gray-500 hover:text-blue-600 focus:outline-hidden focus:text-blue-600 disabled:opacity-50 disabled:pointer-events-none dark:text-slate-400 dark:hover:text-blue-500 dark:focus:text-blue-500" id="basic-tabs-item-2" aria-selected="false" data-hs-tab="#basic-tabs-2" aria-controls="basic-tabs-2" role="tab">
                         Weeks
                     </button>
-                    <button type="button" className="hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600 py-4 px-1 inline-flex items-center gap-x-2 border-b-2 border-transparent text-sm whitespace-nowrap text-gray-500 hover:text-blue-600 focus:outline-hidden focus:text-blue-600 disabled:opacity-50 disabled:pointer-events-none dark:text-neutral-400 dark:hover:text-blue-500 dark:focus:text-blue-500" id="basic-tabs-item-3" aria-selected="false" data-hs-tab="#basic-tabs-3" aria-controls="basic-tabs-3" role="tab">
+                    <button type="button" className="hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600 py-4 px-1 inline-flex items-center gap-x-2 border-b-2 border-transparent text-sm whitespace-nowrap text-gray-500 hover:text-blue-600 focus:outline-hidden focus:text-blue-600 disabled:opacity-50 disabled:pointer-events-none dark:text-slate-400 dark:hover:text-blue-500 dark:focus:text-blue-500" id="basic-tabs-item-3" aria-selected="false" data-hs-tab="#basic-tabs-3" aria-controls="basic-tabs-3" role="tab">
                         Months
                     </button>
                 </nav>
@@ -49,10 +49,10 @@ const TimetableCalendar = () => {
 
 
                         <div
-                                                        className="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-neutral-700"
+                            className="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-slate-700"
                         >
                             <div className="w-full flex-grow overflow-x-auto overflow-y-hidden">
-                                <table className="min-w-full divide-y divide-gray-200 dark:divide-neutral-700">
+                                <table className="min-w-full divide-y divide-gray-200 dark:divide-slate-700">
                                     <thead> <tr >
                                         {Array.from({ length: 7 }).map((_, i) => {
                                             const hour = 7 + i;
@@ -60,7 +60,7 @@ const TimetableCalendar = () => {
                                             const time = `${hour < 10 ? "0" + hour : hour}:${minutes}`;
                                             return (
 
-                                                <th key={time} scope="col" className=" py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500  min-w-20">
+                                                <th key={time} scope="col" className=" py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-slate-500  min-w-20">
                                                     {time}
                                                 </th>
                                             );
@@ -76,7 +76,7 @@ const TimetableCalendar = () => {
                                                 <th
                                                     key={time}
                                                     scope="col"
-                                                    className="py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500 min-w-20"
+                                                    className="py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-slate-500 min-w-20"
                                                 >
                                                     {time}
                                                 </th>
@@ -84,17 +84,17 @@ const TimetableCalendar = () => {
                                         })}
                                     </tr>
                                     </thead>
-                                    <tbody className="divide-y divide-gray-200 dark:divide-neutral-700">
+                                    <tbody className="divide-y divide-gray-200 dark:divide-slate-700">
                                         <tr>
 
                                             {Array.from({ length: 12 }).map((_, i) => {
-                                             return (
+                                                return (
                                                     <td
                                                         key={i}
                                                         scope="col"
-                                                        className="bg-blue-100 px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-800"                                                >
+                                                        className="bg-blue-100 px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-slate-800"                                                >
                                                         {/* {'string'} */}
-                                                        
+
                                                     </td>
                                                 );
                                             })}
@@ -110,20 +110,20 @@ const TimetableCalendar = () => {
                             {/* <!-- Footer --> */}
 
                             {/* </div> */}
-                            <div  className="p-5">
+                            <div className="p-5">
 
                             </div>
                             {/* <!-- End Footer --> */}
                         </div>
                     </div>
                     <div id="basic-tabs-2" className="hidden" role="tabpanel" aria-labelledby="basic-tabs-item-2">
-                        <p className="text-gray-500 dark:text-neutral-400">
-                            This is the <em className="font-semibold text-gray-800 dark:text-neutral-200">second</em> item's tab body.
+                        <p className="text-gray-500 dark:text-slate-400">
+                            This is the <em className="font-semibold text-gray-800 dark:text-slate-200">second</em> item's tab body.
                         </p>
                     </div>
                     <div id="basic-tabs-3" className="hidden" role="tabpanel" aria-labelledby="basic-tabs-item-3">
-                        <p className="text-gray-500 dark:text-neutral-400">
-                            This is the <em className="font-semibold text-gray-800 dark:text-neutral-200">third</em> item's tab body.
+                        <p className="text-gray-500 dark:text-slate-400">
+                            This is the <em className="font-semibold text-gray-800 dark:text-slate-200">third</em> item's tab body.
                         </p>
                     </div>
                 </div>

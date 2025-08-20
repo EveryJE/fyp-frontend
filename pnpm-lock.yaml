@@ -17,6 +17,9 @@ importers:
       '@maplibre/maplibre-gl-inspect':
         specifier: ^1.7.0
         version: 1.7.1(maplibre-gl@4.7.1)
+      '@preline/file-upload':
+        specifier: ^3.2.3
+        version: 3.2.3
       '@radix-ui/react-dropdown-menu':
         specifier: ^2.1.5
         version: 2.1.15(@types/react-dom@18.3.7(@types/react@18.3.23))(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -27,7 +30,7 @@ importers:
         specifier: ^1.1.1
         version: 1.1.9(@types/react-dom@18.3.7(@types/react@18.3.23))(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@remix-run/node':
-        specifier: ^2.13.1
+        specifier: ^2.17.0
         version: 2.17.0(typescript@5.9.2)
       '@remix-run/react':
         specifier: ^2.13.1
@@ -59,6 +62,9 @@ importers:
       dotted-map:
         specifier: ^2.2.3
         version: 2.2.3
+      dropzone:
+        specifier: 6.0.0-beta.2
+        version: 6.0.0-beta.2
       geojson:
         specifier: ^0.5.0
         version: 0.5.0
@@ -68,6 +74,9 @@ importers:
       isbot:
         specifier: ^4.1.0
         version: 4.4.0
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
       lucide-react:
         specifier: ^0.513.0
         version: 0.513.0(react@18.3.1)
@@ -883,6 +892,9 @@ packages:
     resolution: {integrity: sha512-PjXntwUKQFTM/MgXIZHBOtuU2rAkmPgfrIxweOJEf1vyytQJNLDMI4YIRO3LUkt++F4TyAQHjPoRsteYa+gtVQ==}
     peerDependencies:
       '@types/geojson': '*'
+
+  '@preline/file-upload@3.2.3':
+    resolution: {integrity: sha512-QnEQy6bJeaa93bD5CTRvv936oIxhggSbiJNXswvxUJ3BhAY1KW/GaXhImTGDTLsENQUzohJX1l598t57uCQsew==}
 
   '@radix-ui/primitive@1.1.2':
     resolution: {integrity: sha512-XnbHrrprsNqZKQhStrSwgRUQzoCI1glLzdw79xiZPoofhGICeZRSQ3dIxAKH1gb3OHfNf4d6f+vAv3kil2eggA==}
@@ -6421,6 +6433,8 @@ snapshots:
   '@placemarkio/polyline@1.2.0(@types/geojson@7946.0.16)':
     dependencies:
       '@types/geojson': 7946.0.16
+
+  '@preline/file-upload@3.2.3': {}
 
   '@radix-ui/primitive@1.1.2': {}
 

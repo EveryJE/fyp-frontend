@@ -8,7 +8,7 @@ const Sidebar: React.FC = () => {
   return (
     <div
       id="hs-pro-sidebar"
-      className="hs-overlay [--auto-close:md] hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform w-65 hs-overlay-minified:w-13 overflow-hidden hidden fixed inset-y-0 z-60 start-0 bg-white border-e border-gray-200 dark:border-neutral-700 md:block md:translate-x-0 md:end-auto md:bottom-0 dark:bg-neutral-800"
+      className="hs-overlay [--auto-close:md] hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform w-65 hs-overlay-minified:w-13 overflow-hidden hidden fixed inset-y-0 z-60 start-0 bg-white border-e border-gray-200 dark:border-slate-700 md:block md:translate-x-0 md:end-auto md:bottom-0 dark:bg-slate-800"
       role="dialog"
       tabIndex={-1}
       aria-label="Sidebar"

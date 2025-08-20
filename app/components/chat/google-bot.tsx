@@ -16,7 +16,7 @@ const Suggestions: React.FC<{ suggestions: string[], onSelect: (suggestion: stri
                 <button
                     key={i}
                     onClick={() => onSelect(s)}
-                    className="py-1.5 px-2.5 inline-flex items-center gap-x-1.5 text-sm text-gray-800 bg-gray-100 hover:text-cyan-700 rounded-lg focus:outline-none focus:text-cyan-700 dark:bg-neutral-700 dark:text-neutral-200 dark:hover:text-neutral-400"
+                    className="py-1.5 px-2.5 inline-flex items-center gap-x-1.5 text-sm text-gray-800 bg-gray-100 hover:text-cyan-700 rounded-lg focus:outline-none focus:text-cyan-700 dark:bg-slate-700 dark:text-slate-200 dark:hover:text-slate-400"
                 >
                     {s}
                 </button>
@@ -104,15 +104,15 @@ export function Chatbot() {
                 aria-labelledby="chatbot-modal-label"
             >
                 <div className="hs-overlay-open:mt-0 hs-overlay-open:opacity-100 hs-overlay-open:scale-100 hs-overlay-open:duration-300 opacity-0 scale-95 transition-all max-w-full max-h-full h-full sm:absolute sm:bottom-4 sm:right-4 sm:max-w-md sm:h-auto sm:max-h-[90vh]">
-                    <div className="flex flex-col bg-white pointer-events-auto max-w-full max-h-full h-full sm:max-w-md sm:h-auto sm:border sm:rounded-xl sm:shadow-2xs dark:bg-neutral-800 sm:dark:border-neutral-700">
+                    <div className="flex flex-col bg-white pointer-events-auto max-w-full max-h-full h-full sm:max-w-md sm:h-auto sm:border sm:rounded-xl sm:shadow-2xs dark:bg-slate-800 sm:dark:border-slate-700">
                         {/* Modal Header */}
-                        <div className="flex justify-between items-center py-3 px-4 border-b border-gray-200 dark:border-neutral-700">
+                        <div className="flex justify-between items-center py-3 px-4 border-b border-gray-200 dark:border-slate-700">
                             <h3 id="chatbot-modal-label" className="font-bold text-gray-800 dark:text-white">
                                 Campus Assistant
                             </h3>
                             <button
                                 type="button"
-                                className="size-8 inline-flex justify-center items-center gap-x-2 rounded-full border border-transparent bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:bg-neutral-700 dark:hover:bg-neutral-600 dark:text-neutral-400 dark:focus:bg-neutral-600"
+                                className="size-8 inline-flex justify-center items-center gap-x-2 rounded-full border border-transparent bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-slate-400 dark:focus:bg-slate-600"
                                 aria-label="Close"
                                 data-hs-overlay="#chatbot-modal"
                             >
@@ -150,12 +150,12 @@ export function Chatbot() {
                         </div>
 
                         {/* Modal Footer with ChatInput */}
-                        <form ref={formRef} onSubmit={handleSubmit} className="order-t border-gray-200 dark:border-neutral-700 mt-auto sm:mt-0">
-                            <div className="bg-white/10 border border-gray-300 backdrop-blur-sm rounded-2xl shadow-xs dark:bg-neutral-800/10 dark:border-neutral-600">
+                        <form ref={formRef} onSubmit={handleSubmit} className="order-t border-gray-200 dark:border-slate-700 mt-auto sm:mt-0">
+                            <div className="bg-white/10 border border-gray-300 backdrop-blur-sm rounded-2xl shadow-xs dark:bg-slate-800/10 dark:border-slate-600">
                                 <div className="pb-2 px-2">
                                     <textarea
                                         id="hs-pro-aimt"
-                                        className="max-h-20  p-2 ps-2 block w-full bg-transparent border-transparent resize-none text-gray-800 placeholder-gray-500 focus:outline-none focus:border-transparent focus:ring-transparent dark:text-neutral-200 dark:placeholder-neutral-500"
+                                        className="max-h-20  p-2 ps-2 block w-full bg-transparent border-transparent resize-none text-gray-800 placeholder-gray-500 focus:outline-none focus:border-transparent focus:ring-transparent dark:text-slate-200 dark:placeholder-slate-500"
                                         placeholder="Ask anything..."
                                         value={message}
                                         onChange={(e) => setMessage(e.target.value)}
@@ -165,10 +165,10 @@ export function Chatbot() {
                                     />
                                     <div className=" flex justify-between items-center gap-x-1">
                                         <div className="flex items-center gap-x-1">
-                                            <button type="button" className="flex justify-center items-center size-8 text-sm text-gray-600 hover:bg-gray-100 rounded-lg dark:text-neutral-400 dark:hover:bg-neutral-700">
+                                            <button type="button" className="flex justify-center items-center size-8 text-sm text-gray-600 hover:bg-gray-100 rounded-lg dark:text-slate-400 dark:hover:bg-slate-700">
                                                 <svg className="shrink-0 size-4.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="M12 5v14" /></svg>
                                             </button>
-                                            <button type="button" className="flex justify-center items-center size-8 text-sm text-gray-600 hover:bg-gray-100 rounded-lg dark:text-neutral-400 dark:hover:bg-neutral-700">
+                                            <button type="button" className="flex justify-center items-center size-8 text-sm text-gray-600 hover:bg-gray-100 rounded-lg dark:text-slate-400 dark:hover:bg-slate-700">
                                                 <svg className="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" /><path d="M19 10v2a7 7 0 0 1-14 0v-2" /><line x1="12" x2="12" y1="19" y2="22" /></svg>
                                             </button>
                                         </div>

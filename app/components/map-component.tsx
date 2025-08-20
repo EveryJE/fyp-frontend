@@ -93,22 +93,42 @@ export default function MapComponent() {
           new POIsLayer(building.pois as GeoJSON.GeoJSON, theme as string),
         );
 
-        const ktHallPoi = building.pois.features.find(
-          (feature) => feature.properties?.name === "Kofi Tetteh Hall",
+        // Try loading the Main Administration model first
+        const mainAdminPoi = building.pois.features.find(
+          (feature) => feature.properties?.name === "Administration",
         );
 
-        if (ktHallPoi && ktHallPoi.geometry.type === "Point") {
-          console.log("Kofi Tetteh Hall POI found, adding 3D model.");
-          const ktHallCoordinates = ktHallPoi.geometry.coordinates as LngLatLike;
+        if (mainAdminPoi && mainAdminPoi.geometry.type === "Point") {
+          console.log("Main Administration POI found, adding 3D model.");
+          const adminCoordinates = mainAdminPoi.geometry.coordinates as LngLatLike;
           
           const threeJSLayer = new ThreeJSLayer(
-            "kt-hall-model",
-            "/models/kt_hall.gltf", // Using .glb for simplicity, change if needed
-            ktHallCoordinates,
+            "main-admin-model",
+            "/models/main_administration.glb",
+            adminCoordinates,
           );
           map.addLayer(threeJSLayer);
         } else {
-          console.warn("Kofi Tetteh Hall POI not found in building data.");
+          console.warn("Main Administration POI not found in building data.");
+          
+          // Fallback to Kofi Tetteh Hall
+          const ktHallPoi = building.pois.features.find(
+            (feature) => feature.properties?.name === "Kofi Tetteh Hall",
+          );
+
+          if (ktHallPoi && ktHallPoi.geometry.type === "Point") {
+            console.log("Kofi Tetteh Hall POI found, adding 3D model.");
+            const ktHallCoordinates = ktHallPoi.geometry.coordinates as LngLatLike;
+            
+            const threeJSLayer = new ThreeJSLayer(
+              "kt-hall-model",
+              "/models/kt_hall.glb",
+              ktHallCoordinates,
+            );
+            map.addLayer(threeJSLayer);
+          } else {
+            console.warn("Kofi Tetteh Hall POI not found in building data.");
+          }
         }
       } catch (error) {
         console.error("Failed to initialize map layers:", error);

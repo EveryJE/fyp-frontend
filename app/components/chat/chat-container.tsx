@@ -9,7 +9,7 @@ const ChatContainer: React.FC = () => {
       {/* This area will eventually display the conversation history. */}
       {/* For now, it shows the initial prompt. */}
       <div className="flex flex-col justify-center items-center grow sm:flex-none">
-        <h1 className="mb-8 text-3xl text-center text-gray-800 dark:text-neutral-200">
+        <h1 className="mb-8 text-3xl text-center text-gray-800 dark:text-slate-200">
           What can I help with?
         </h1>
       </div>

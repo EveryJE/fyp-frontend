@@ -8,7 +8,7 @@ interface SuggestionProps {
 
 const Suggestion: React.FC<SuggestionProps> = ({ name, icon }) => (
   <a
-    className="py-1.5 px-2.5 inline-flex items-center gap-x-1.5 text-sm text-gray-800 bg-gray-100 hover:text-cyan-700 rounded-lg focus:outline-hidden focus:text-cyan-700 dark:bg-neutral-700 dark:text-neutral-200 dark:hover:text-neutral-400"
+    className="py-1.5 px-2.5 inline-flex items-center gap-x-1.5 text-sm text-gray-800 bg-gray-100 hover:text-cyan-700 rounded-lg focus:outline-hidden focus:text-cyan-700 dark:bg-slate-700 dark:text-slate-200 dark:hover:text-slate-400"
     href="#"
   >
     {icon}

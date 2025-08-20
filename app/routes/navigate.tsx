@@ -45,7 +45,7 @@ export default function Index() {
   const splitterConfig = {
     horizontalSplitterTemplate: `
       <div>
-        <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 block w-4 h-6 flex justify-center items-center bg-white border border-gray-200 text-gray-400 rounded-md cursor-col-resize hover:bg-gray-100 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-600 dark:hover:bg-neutral-900">
+        <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 block w-4 h-6 flex justify-center items-center bg-white border border-gray-200 text-gray-400 rounded-md cursor-col-resize hover:bg-gray-100 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-600 dark:hover:bg-slate-900">
           <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="9" cy="12" r="1"/>
             <circle cx="9" cy="5" r="1"/>
@@ -57,10 +57,10 @@ export default function Index() {
         </span>
       </div>
     `,
-    horizontalSplitterClasses: 'relative flex border-s border-gray-200 dark:border-neutral-700',
+    horizontalSplitterClasses: 'relative flex border-s border-gray-200 dark:border-slate-700',
     verticalSplitterTemplate: `
       <div>
-        <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 block w-6 h-4 flex justify-center items-center bg-white border border-gray-200 text-gray-400 rounded-md cursor-row-resize hover:bg-gray-100 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-600 dark:hover:bg-neutral-900">
+        <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 block w-6 h-4 flex justify-center items-center bg-white border border-gray-200 text-gray-400 rounded-md cursor-row-resize hover:bg-gray-100 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-600 dark:hover:bg-slate-900">
           <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="9" r="1"/>
             <circle cx="19" cy="9" r="1"/>
@@ -72,14 +72,14 @@ export default function Index() {
         </span>
       </div>
     `,
-    verticalSplitterClasses: 'relative flex border-t border-gray-200 dark:border-neutral-700',
+    verticalSplitterClasses: 'relative flex border-t border-gray-200 dark:border-slate-700',
   };
 
   return (
     <div className="h-screen min-h-screen">
       <div data-hs-layout-splitter={JSON.stringify(splitterConfig)}>
         <div
-          className="flex flex-col sm:flex-row border border-gray-200 rounded-lg h-screen min-h-screen dark:border-neutral-700 overflow-hidden"
+          className="flex flex-col sm:flex-row border border-gray-200 rounded-lg h-screen min-h-screen dark:border-slate-700 overflow-hidden"
           data-hs-layout-splitter-horizontal-group={isVertical ? null : ""}
           data-hs-layout-splitter-vertical-group={isVertical ? "" : null}
         >
@@ -88,7 +88,7 @@ export default function Index() {
             data-hs-layout-splitter-item="40.0"
             style={{ flex: '40 1 0' }}
           >
-            <div className="flex items-center justify-center h-full p-3 text-gray-800 dark:text-neutral-200">
+            <div className="flex items-center justify-center h-full p-3 text-gray-800 dark:text-slate-200">
               Top
             </div>
           </div>
