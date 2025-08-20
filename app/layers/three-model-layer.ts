@@ -1,123 +1,135 @@
+import maplibregl, { Map, LngLatLike } from "maplibre-gl";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import maplibregl, { CustomLayerInterface, Map } from "maplibre-gl";
-import { mat4 } from "gl-matrix";
-import { IndoorMapGeoJSON } from "~/types/geojson";
 
-interface ModelConfig {
-  featureId: number;
-  modelUrl: string;
-  scale: number;
-}
+// --- START DEBUGGING SETTINGS ---
+// You will need to tweak these values based on the console output.
+const modelAltitude = 0;
+// Start with a 90-degree rotation on the X-axis. This is a common starting point.
+const modelRotate = [Math.PI / 2, 0, 0];
+// Start with a large, obvious scale.
+const modelScale = 1000000;
+// --- END DEBUGGING SETTINGS ---
 
-export default class ThreeJsModelLayer implements CustomLayerInterface {
-  id = "threejs-model-layer";
-  type = "custom" as const;
-  renderingMode = "3d" as const;
-  private map: Map | null = null;
+export class ThreeJSLayer {
+  id: string;
+  type: "custom";
+  renderingMode: "3d";
+
+  private camera: THREE.Camera;
   private scene: THREE.Scene;
-  private camera: THREE.PerspectiveCamera;
-  private renderer: THREE.WebGLRenderer;
-  private models: Map<number, THREE.Group> = new Map();
-  private geojson: IndoorMapGeoJSON;
-  private modelConfigs: ModelConfig[];
+  private map: Map | null = null;
+  private renderer: THREE.WebGLRenderer | null = null;
+  private modelURL: string;
+  private modelOrigin: LngLatLike;
+  
+  private modelTransform: {
+    translateX: number;
+    translateY: number;
+    translateZ: number;
+    rotateX: number;
+    rotateY: number;
+    rotateZ: number;
+    scale: number;
+  } | undefined;
 
-  constructor(geojson: IndoorMapGeoJSON, modelConfigs: ModelConfig[]) {
-    this.geojson = geojson;
-    this.modelConfigs = modelConfigs;
+  constructor(id: string, modelURL: string, origin: LngLatLike) {
+    this.id = id;
+    this.modelURL = modelURL;
+    this.modelOrigin = origin;
+    this.type = "custom";
+    this.renderingMode = "3d";
+
+    this.camera = new THREE.Camera();
     this.scene = new THREE.Scene();
-    this.camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
-    this.renderer = new THREE.WebGLRenderer({ alpha: true });
+
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.75);
+    this.scene.add(ambientLight);
+
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.75);
+    directionalLight.position.set(0.5, -1, 1);
+    this.scene.add(directionalLight);
   }
 
   onAdd(map: Map, gl: WebGLRenderingContext) {
     this.map = map;
-    this.renderer.setSize(map.getCanvas().width, map.getCanvas().height);
-    this.renderer.setPixelRatio(window.devicePixelRatio);
-
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
-    this.scene.add(ambientLight);
-
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
-    directionalLight.position.set(0, 0, 10);
-    this.scene.add(directionalLight);
-
-    this.loadModels();
-
-    this.updateCamera();
-    map.on("move", () => this.updateCamera());
-    map.on("resize", () => {
-      this.renderer.setSize(map.getCanvas().width, map.getCanvas().height);
-      this.camera.aspect = map.getCanvas().width / map.getCanvas().height;
-      this.camera.updateProjectionMatrix();
+    this.renderer = new THREE.WebGLRenderer({
+      canvas: map.getCanvas(),
+      context: gl,
+      antialias: true,
     });
-  }
+    this.renderer.autoClear = false;
+    
+    const modelAsMercatorCoordinate = maplibregl.MercatorCoordinate.fromLngLat(
+      this.modelOrigin,
+      modelAltitude
+    );
 
-  private loadModels() {
+    this.modelTransform = {
+      translateX: modelAsMercatorCoordinate.x,
+      translateY: modelAsMercatorCoordinate.y,
+      translateZ: modelAsMercatorCoordinate.z,
+      rotateX: modelRotate[0],
+      rotateY: modelRotate[1],
+      rotateZ: modelRotate[2],
+      scale: modelScale,
+    };
+    
+    // --- ESSENTIAL DEBUGGING LOGS ---
+    console.log(`[ThreeJSLayer] Adding layer. Attempting to load model from: ${this.modelURL}`);
+    console.log(`[ThreeJSLayer] Model will be placed at coordinates:`, this.modelOrigin);
+    console.log(`[ThreeJSLayer] Model scale set to: ${modelScale}`);
+    // ---
+
     const loader = new GLTFLoader();
-    this.modelConfigs.forEach((config) => {
-      const feature = this.geojson.features.find((f) => f.id === config.featureId);
-      if (!feature || feature.geometry.type !== "Polygon") return;
-
-      const coordinates = feature.geometry.coordinates[0];
-      const centroid = coordinates.reduce(
-        (acc, [lon, lat]) => [acc[0] + lon / coordinates.length, acc[1] + lat / coordinates.length],
-        [0, 0],
-      );
-
-      loader.load(
-        config.modelUrl,
-        (gltf) => {
-          const model = gltf.scene;
-          model.scale.set(config.scale, config.scale, config.scale);
-
-          const mercator = maplibregl.MercatorCoordinate.fromLngLat(
-            { lng: centroid[0], lat: centroid[1] },
-            0,
-          );
-          model.position.set(mercator.x, mercator.y, 0);
-
-          this.models.set(config.featureId, model);
-          this.scene.add(model);
-        },
-        undefined,
-        (error) => console.error(`Failed to load model ${config.modelUrl}:`, error),
-      );
-    });
+    loader.load(
+      this.modelURL,
+      // SUCCESS callback
+      (gltf) => {
+        console.log("%c[ThreeJSLayer] Model successfully loaded and parsed!", "color: green; font-weight: bold;", gltf);
+        this.scene.add(gltf.scene);
+      },
+      // PROGRESS callback (optional, but good for checking network activity)
+      (xhr) => {
+        console.log(`[ThreeJSLayer] Model loading progress: ${(xhr.loaded / xhr.total * 100).toFixed(2)}% loaded`);
+      },
+      // ERROR callback
+      (error) => {
+        console.error("[ThreeJSLayer] An error happened while loading the 3D model:", error);
+      }
+    );
   }
 
-  private updateCamera() {
-    if (!this.map) return;
-    const { lng, lat } = this.map.getCenter();
-    const mercator = maplibregl.MercatorCoordinate.fromLngLat({ lng, lat }, 0);
-    const pitch = this.map.getPitch();
-    const zoom = this.map.getZoom();
+  
 
-    const cameraHeight = 2 * Math.pow(2, 18 - zoom);
-    this.camera.position.set(mercator.x, mercator.y, cameraHeight);
-    this.camera.lookAt(mercator.x, mercator.y, 0);
-    this.camera.fov = 60;
-    this.camera.aspect = this.map.getCanvas().width / this.map.getCanvas().height;
-    this.camera.updateProjectionMatrix();
-  }
+  render(gl: WebGLRenderingContext, matrix: ArrayLike<number>) {
+    if (!this.renderer || !this.map || !this.modelTransform) return;
 
-  render(_gl: WebGLRenderingContext, matrix: mat4) {
-    const m = new THREE.Matrix4().fromArray(matrix as number[]);
-    this.camera.projectionMatrix = m;
+    const rotationX = new THREE.Matrix4().makeRotationX(this.modelTransform.rotateX);
+    const rotationY = new THREE.Matrix4().makeRotationY(this.modelTransform.rotateY);
+    const rotationZ = new THREE.Matrix4().makeRotationZ(this.modelTransform.rotateZ);
 
-    this.renderer.state.reset();
+    const m = new THREE.Matrix4().fromArray(matrix);
+    const l = new THREE.Matrix4()
+      .makeTranslation(
+        this.modelTransform.translateX,
+        this.modelTransform.translateY,
+        this.modelTransform.translateZ
+      )
+      .scale(
+        new THREE.Vector3(
+          this.modelTransform.scale,
+          -this.modelTransform.scale, // Inverting Y is typical for map alignment
+          this.modelTransform.scale
+        )
+      )
+      .multiply(rotationX)
+      .multiply(rotationY)
+      .multiply(rotationZ);
+
+    this.camera.projectionMatrix = m.multiply(l);
+    this.renderer.resetState();
     this.renderer.render(this.scene, this.camera);
-    this.map?.triggerRepaint();
-  }
-
-  setFloorLevel(_floor: number) {
-    // No-op for complete building models
-  }
-
-  onRemove() {
-    this.renderer.dispose();
-    this.models.clear();
-    this.scene.clear();
-    this.map = null;
+    this.map.triggerRepaint();
   }
 }

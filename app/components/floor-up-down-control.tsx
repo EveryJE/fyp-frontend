@@ -1,19 +1,14 @@
 import { NavigationControl } from "maplibre-gl";
 import { useEffect, useState } from "react";
 import IndoorMapLayer from "~/layers/indoor-map-layer";
-import ThreeJsModelLayer from "~/layers/three-model-layer";
 import useFloorStore from "~/stores/floor-store";
 import useMapStore from "~/stores/use-map-store";
 
 interface FloorUpDownControlProps {
   indoorMapLayer: IndoorMapLayer;
-  threeJsLayer: ThreeJsModelLayer;
 }
 
-export function FloorUpDownControl({
-  indoorMapLayer,
-  threeJsLayer,
-}: FloorUpDownControlProps) {
+export function FloorUpDownControl({ indoorMapLayer }: FloorUpDownControlProps) {
   const map = useMapStore((state) => state.mapInstance);
   const { currentFloor, setCurrentFloor } = useFloorStore();
   const [availableFloors, setAvailableFloors] = useState<number[]>([0]);
@@ -21,7 +16,7 @@ export function FloorUpDownControl({
   useEffect(() => {
     const loadFloors = async () => {
       const floors = await indoorMapLayer.getAvailableFloors();
-      setAvailableFloors(floors.sort((a, b) => a - b));
+      setAvailableFloors(floors.sort((a, b) => a - b)); // Sort ascending
     };
     loadFloors();
   }, [indoorMapLayer]);
@@ -37,26 +32,24 @@ export function FloorUpDownControl({
 
     const upButton = document.createElement("button");
     upButton.className = "maplibregl-ctrl-icon maplibregl-ctrl-floor-up dark:text-black";
-    upButton.innerHTML = "&#8593;";
+    upButton.innerHTML = "&#8593;"; // Up arrow
     upButton.addEventListener("click", () => {
       const nextFloor = availableFloors.find((f) => f > currentFloor) ?? currentFloor;
       if (nextFloor !== currentFloor) {
         setCurrentFloor(nextFloor);
         indoorMapLayer.setFloorLevel(nextFloor);
-        threeJsLayer.setFloorLevel(nextFloor);
         map?.flyTo({ pitch: 45, zoom: 18, duration: 1000 });
       }
     });
 
     const downButton = document.createElement("button");
     downButton.className = "maplibregl-ctrl-icon maplibregl-ctrl-floor-down dark:text-black";
-    downButton.innerHTML = "&#8595;";
+    downButton.innerHTML = "&#8595;"; // Down arrow
     downButton.addEventListener("click", () => {
-      const prevFloor = availableFloors.reverse().find((f) => f < currentFloor) ?? currentFloor;
+      const prevFloor = availableFloors.slice().reverse().find((f) => f < currentFloor) ?? currentFloor;
       if (prevFloor !== currentFloor) {
         setCurrentFloor(prevFloor);
         indoorMapLayer.setFloorLevel(prevFloor);
-        threeJsLayer.setFloorLevel(prevFloor);
         map?.flyTo({ pitch: 45, zoom: 18, duration: 1000 });
       }
     });
@@ -66,7 +59,7 @@ export function FloorUpDownControl({
     return () => {
       map?.removeControl(floorControl);
     };
-  }, [map, currentFloor, setCurrentFloor, indoorMapLayer, threeJsLayer, availableFloors]);
+  }, [map, currentFloor, setCurrentFloor, indoorMapLayer, availableFloors]);
 
   return null;
 }

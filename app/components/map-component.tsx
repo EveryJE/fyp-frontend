@@ -2,38 +2,34 @@ import MaplibreInspect from "@maplibre/maplibre-gl-inspect";
 import "@maplibre/maplibre-gl-inspect/dist/maplibre-gl-inspect.css";
 import maplibregl, {
   FullscreenControl,
-  NavigationControl,
+  LngLatLike,
   Map,
+  NavigationControl,
 } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { Theme, useTheme } from "remix-themes";
 import config from "~/config";
 import IndoorMapLayer from "~/layers/indoor-map-layer";
 import POIsLayer from "~/layers/pois-layer";
+import { ThreeJSLayer } from "~/layers/three-model-layer"; // Ensure this path is correct
 import building from "~/mock/building.json";
 import useMapStore from "~/stores/use-map-store";
+import "~/maplibre.css";
+import { IndoorMapGeoJSON } from "~/types/geojson";
 import DiscoveryPanel from "./discovery-panel/discovery-panel";
 import { FloorSelector } from "./floor-selector";
 import { FloorUpDownControl } from "./floor-up-down-control";
-import { IndoorMapGeoJSON } from "~/types/geojson";
-import DemoBanner from "./demo-banner";
-// import OIMLogo from "../controls/oim-logo";
-import { Theme, useTheme } from "remix-themes";
-import "~/maplibre.css";
 import GeolocationControlComponent from "./geolocation-control";
-import {
-  Feature,
-  Point,
-  Polygon,
-  LineString,
-  GeoJsonProperties,
-} from "geojson";
 
 export default function MapComponent() {
   const mapContainer = useRef<HTMLDivElement>(null);
   const [theme] = useTheme();
-
   const setMapInstance = useMapStore((state) => state.setMapInstance);
+
+  // We use useState to hold the map instance.
+  const [map, setMap] = useState<Map | null>(null);
+
   const indoorMapLayer = useMemo(
     () =>
       new IndoorMapLayer(
@@ -43,77 +39,95 @@ export default function MapComponent() {
     [theme],
   );
 
-  const [map, setMap] = useState<Map | null>(null);
-
+  // Effect for creating the map instance ONCE
   useEffect(() => {
-    if (mapContainer.current && !map) {
-      const isDarkMode = window.matchMedia(
-        "(prefers-color-scheme: dark)",
-      ).matches;
-      const mapStyle = isDarkMode
-        ? config.mapStyles.dark
-        : config.mapStyles.light;
+    if (map || !mapContainer.current) return; // If map exists or container is not ready, do nothing.
 
-      const mapInstance = new maplibregl.Map({
-        container: mapContainer.current,
-        style: mapStyle,
-        center: config.mapConfig.center as [number, number],
-        zoom: config.mapConfig.zoom,
-        bearing: config.mapConfig.bearing,
-        pitch: config.mapConfig.pitch,
-        maxBounds: config.mapConfig.maxBounds as [
-          [number, number],
-          [number, number],
-        ],
-      });
-
-      setMap(mapInstance);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!mapContainer.current) return;
-
-    const map = new maplibregl.Map({
+    const mapInstance = new maplibregl.Map({
       ...config.mapConfig,
       style: config.mapStyles[theme as Theme],
       container: mapContainer.current,
     });
-    setMapInstance(map);
+    
+    setMap(mapInstance);
+    setMapInstance(mapInstance);
 
-    map.on("load", () => {
-      try {
-        // map.addLayer(new Tile3dLayer());
-        map.addLayer(indoorMapLayer);
-        map.addLayer(
-          new POIsLayer(building.pois as GeoJSON.GeoJSON, theme as string),
-        );
-      } catch (error) {
-        console.error("Failed to initialize map layers:", error);
-      }
-    });
-
-    map.addControl(new NavigationControl(), "bottom-right");
-    map.addControl(new FullscreenControl(), "bottom-right");
+    // Add controls once the map is created.
+    mapInstance.addControl(new NavigationControl(), "bottom-right");
+    mapInstance.addControl(new FullscreenControl(), "bottom-right");
 
     if (process.env.NODE_ENV === "development") {
-      map.addControl(
+      mapInstance.addControl(
         new MaplibreInspect({
-          popup: new maplibregl.Popup({
-            closeOnClick: false,
-          }),
+          popup: new maplibregl.Popup({ closeOnClick: false }),
           blockHoverPopupOnClick: true,
         }),
         "bottom-right",
       );
     }
-
-    // map.addControl(new OIMLogo());
-
+    
+    // The cleanup function is now only for when the component is unmounted.
     return () => {
-      map.remove();
+      mapInstance.remove();
+      setMap(null);
     };
-  }, [indoorMapLayer, setMapInstance, theme]);
+  }, []); // Empty dependency array means this runs only once.
+
+  // Effect for handling THEME changes
+  useEffect(() => {
+    if (!map || !theme) return;
+    // Instead of creating a new map, we just update the style.
+    map.setStyle(config.mapStyles[theme as Theme]);
+    
+  }, [theme, map]);
+
+
+  // Effect for loading data and adding layers
+  useEffect(() => {
+    if (!map) return;
+
+    const onMapLoad = () => {
+      try {
+        map.addLayer(indoorMapLayer);
+        map.addLayer(
+          new POIsLayer(building.pois as GeoJSON.GeoJSON, theme as string),
+        );
+
+        const ktHallPoi = building.pois.features.find(
+          (feature) => feature.properties?.name === "Kofi Tetteh Hall",
+        );
+
+        if (ktHallPoi && ktHallPoi.geometry.type === "Point") {
+          console.log("Kofi Tetteh Hall POI found, adding 3D model.");
+          const ktHallCoordinates = ktHallPoi.geometry.coordinates as LngLatLike;
+          
+          const threeJSLayer = new ThreeJSLayer(
+            "kt-hall-model",
+            "/models/kt_hall.gltf", // Using .glb for simplicity, change if needed
+            ktHallCoordinates,
+          );
+          map.addLayer(threeJSLayer);
+        } else {
+          console.warn("Kofi Tetteh Hall POI not found in building data.");
+        }
+      } catch (error) {
+        console.error("Failed to initialize map layers:", error);
+      }
+    };
+    
+    // We need to wait for the map to be fully loaded before adding layers.
+    if (map.isStyleLoaded()) {
+      onMapLoad();
+    } else {
+      map.on('load', onMapLoad);
+    }
+
+    // Cleanup: remove the listener when the effect re-runs
+    return () => {
+      map.off('load', onMapLoad);
+    }
+  }, [map, indoorMapLayer, theme]); // This effect now depends on the map and layers.
+
 
   return (
     <div className="flex size-full flex-col">
@@ -128,7 +142,6 @@ export default function MapComponent() {
       <div className="size-full" ref={mapContainer}>
         {map && <GeolocationControlComponent map={map} />}
       </div>
-      {/* <DemoBanner /> */}
     </div>
   );
 }
