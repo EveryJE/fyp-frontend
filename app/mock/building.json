@@ -945,6 +945,89 @@
       {
         "type": "Feature",
         "properties": {
+          "name": "FIMS",
+          "alt_name": "FIMS",
+          "category": null,
+          "restriction": null,
+          "accessibility": null,
+          "display_point": null,
+          "feature_type": "unit",
+          "level_id": 6,
+          "show": true,
+          "area": 0
+        },
+        "geometry": {
+          "coordinates": [
+            [
+              [-2.000913514768939, 5.29990422112941],
+              [-2.00101126404212, 5.300039319387054],
+              [-2.0010191975813996, 5.300030629804581],
+              [-2.0010723522909473, 5.300104886227928],
+              [-2.0011231269377276, 5.3000669680562],
+              [-2.0011199535225614, 5.300059858397844],
+              [-2.001330005707871, 5.299909734535305],
+              [-2.0013186793177624, 5.299895802927935],
+              [-2.0013539910043505, 5.299872583581177],
+              [-2.001334003256858, 5.299845383774269],
+              [-2.0013479946796338, 5.299837422854438],
+              [-2.0012054154170187, 5.299640390065619],
+              [-2.001192090252374, 5.299649014398057],
+              [-2.001165439923227, 5.299613190248479],
+              [-2.00113679081835, 5.299633755963413],
+              [-2.001113471780002, 5.299603239095262],
+              [-2.001083490158834, 5.299625131631927],
+              [-2.0011094742309865, 5.299657638729229],
+              [-2.000874504396222, 5.299827440006865],
+              [-2.0009254138080905, 5.299896711726731],
+              [-2.000913514768939, 5.29990422112941]
+            ],
+            [
+              [-2.0010653084802072, 5.2999786633013315],
+              [-2.000987559800336, 5.299879128072774],
+              [-2.001187484976498, 5.299729035236808],
+              [-2.001257300117004, 5.299834890188436],
+              [-2.0010653084802072, 5.2999786633013315]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "id": 1017
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Electrical engineering Department",
+          "alt_name": "Electrical engineering Department",
+          "category": null,
+          "restriction": null,
+          "accessibility": null,
+          "display_point": null,
+          "feature_type": "unit",
+          "level_id": 6,
+          "show": true,
+          "area": 0
+        },
+        "geometry": {
+          "coordinates": [
+            [
+              [-2.0000655667265903, 5.299615330177403],
+              [-2.000125163721293, 5.29928014430962],
+              [-2.0000956926696745, 5.299274275291253],
+              [-2.0000989672306844, 5.29924232174865],
+              [-2.000024962165071, 5.299231887771398],
+              [-2.0000151384807907, 5.299289273724767],
+              [-1.9998874305875916, 5.299265797653646],
+              [-1.9998317630441989, 5.299570986509934],
+              [-2.0000655667265903, 5.299615330177403]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "id": 1018
+      },
+      {
+        "type": "Feature",
+        "properties": {
           "name": "Drilling Department",
           "alt_name": "Drilling Block",
           "category": null,
@@ -969,6 +1052,129 @@
           "type": "Polygon"
         },
         "id": 1111
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Renewable Department",
+          "alt_name": "Renewable Block",
+          "category": null,
+          "restriction": null,
+          "accessibility": null,
+          "display_point": null,
+          "feature_type": "unit",
+          "level_id": 6,
+          "show": true,
+          "area": 0
+        },
+        "geometry": {
+          "coordinates": [
+            [
+              [-2.000127811355668, 5.29923091080704],
+              [-2.0001782490263054, 5.29894591546369],
+              [-2.000055497103574, 5.298924132374822],
+              [-2.0000044517491062, 5.299207917557254],
+              [-2.000127811355668, 5.29923091080704]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "id": 1020
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Mechanical Department",
+          "alt_name": "Mechanical Block",
+          "category": null,
+          "restriction": null,
+          "accessibility": null,
+          "display_point": null,
+          "feature_type": "unit",
+          "level_id": 6,
+          "show": true,
+          "area": 0
+        },
+        "geometry": {
+          "coordinates": [
+            [
+              [-1.999648049046641, 5.299803935611237],
+              [-1.99976894128352, 5.29982035044155],
+              [-1.999820228899722, 5.299506644718207],
+              [-1.9996993366619904, 5.299493877621956],
+              [-1.999648049046641, 5.299803935611237]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "id": 1019
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Environmental and Safety Department",
+          "alt_name": "Environmental and Safety Department",
+          "category": null,
+          "restriction": null,
+          "accessibility": null,
+          "display_point": null,
+          "feature_type": "unit",
+          "level_id": 6,
+          "show": true,
+          "area": 0
+        },
+        "geometry": {
+          "coordinates": [
+            [
+              [-2.0000555739060815, 5.2988774185914735],
+              [-2.000177127114881, 5.298905798597048],
+              [-2.0002349515346793, 5.298538888928448],
+              [-2.0002448531020605, 5.298441329777958],
+              [-2.0002081651663275, 5.298441329777958],
+              [-2.0002022301052023, 5.298538888928448],
+              [-2.00011858748681, 5.298522368431776],
+              [-2.0000555739060815, 5.2988774185914735]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "id": 1021
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "School of Petroleum",
+          "alt_name": "SPeT",
+          "category": null,
+          "restriction": null,
+          "accessibility": null,
+          "display_point": null,
+          "feature_type": "unit",
+          "level_id": 6,
+          "show": true,
+          "area": 0
+        },
+        "geometry": {
+          "coordinates": [
+            [
+              [-2.001472856069995, 5.297595386818074],
+              [-2.0014552642623755, 5.297572055580815],
+              [-2.00157904139337, 5.297514596878273],
+              [-2.001302764560762, 5.297024155085381],
+              [-2.001214623128419, 5.297073887696726],
+              [-2.0011862010653374, 5.297024155085381],
+              [-2.0010472218040434, 5.29710276705184],
+              [-2.001070912224293, 5.297127094570712],
+              [-2.000964917187474, 5.297181469926159],
+              [-2.0012438366427716, 5.29768168049354],
+              [-2.001346413579199, 5.2976337333627015],
+              [-2.001374307816633, 5.297663601935227],
+              [-2.001472856069995, 5.297595386818074]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "id": 1021
       }
     ]
   },
@@ -1243,7 +1449,7 @@
         },
         "properties": {
           "id": 1007,
-          "name": "School of Petroleum Engineering",
+          "name": "Mini Auditorium",
           "type": "block",
           "floor": 2,
           "metadata": {},
@@ -1387,6 +1593,118 @@
           "floor": 4,
           "metadata": {},
           "building_id": "BUILDING_1016"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "coordinates": [-2.0011173291640887, 5.299980138124866],
+          "type": "Point"
+        },
+        "properties": {
+          "id": 1017,
+          "alt_name": "Geological Engineering",
+          "name": "FIMS",
+          "type": "block",
+          "floor": 4,
+          "metadata": {},
+          "building_id": "BUILDING_1017"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "coordinates": [-1.9999850124949887, 5.299428173962454],
+          "type": "Point"
+        },
+        "properties": {
+          "id": 1018,
+          "alt_name": "Electrical Department Engineering",
+          "name": "Electrical Department",
+          "type": "block",
+          "floor": 4,
+          "metadata": {},
+          "building_id": "BUILDING_1018"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "coordinates": [-1.9999850124949887, 5.299428173962454],
+          "type": "Point"
+        },
+        "properties": {
+          "id": 1019,
+          "alt_name": "Mechanical Department Engineering",
+          "name": "Mechanical Department",
+          "type": "block",
+          "floor": 2,
+          "metadata": {},
+          "building_id": "BUILDING_1019"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "coordinates": [-1.9999850124949887, 5.299428173962454],
+          "type": "Point"
+        },
+        "properties": {
+          "id": 1020,
+          "alt_name": "Mechanical Department Engineering",
+          "name": "Mechanical Department",
+          "type": "block",
+          "floor": 2,
+          "metadata": {},
+          "building_id": "BUILDING_1020"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "coordinates": [-2.0001624790313315, 5.298718420705583],
+          "type": "Point"
+        },
+        "properties": {
+          "id": 1021,
+          "alt_name": "Environmental and Safety Department",
+          "name": "Safety Department",
+          "type": "block",
+          "floor": 2,
+          "metadata": {},
+          "building_id": "BUILDING_1021"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "coordinates": [-2.0012296168006856, 5.297336000473479],
+          "type": "Point"
+        },
+        "properties": {
+          "id": 1022,
+          "alt_name": "SPeT",
+          "name": "School of Petroleum",
+          "type": "block",
+          "floor": 2,
+          "metadata": {},
+          "building_id": "BUILDING_1022"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "coordinates": [-2.0000867630247114, 5.298830162855708],
+          "type": "Point"
+        },
+        "properties": {
+          "id": 901,
+          "alt_name": "SPeT",
+          "name": "Fatao's Office",
+          "type": "block",
+          "floor": 3,
+          "metadata": {},
+          "building_id": "BUILDING_1023"
         }
       }
     ]

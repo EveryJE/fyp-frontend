@@ -1,0 +1,554 @@
+{
+  "blocks": [
+    {
+ "name": "KTH",
+      "id":1011,
+      "rooms":[
+
+      ]
+    },
+    {
+      "name": "Spet",
+      "id":"",
+      "rooms": [
+        {
+          "id": 1022,
+          "Name": "LH 1",
+          "Capacity": 110,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": "1"
+        },
+        {
+          "Id": 2,
+          "Name": "LH 2",
+          "Capacity": 110,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": "1"
+        },
+        {
+          "Id": 3,
+          "Name": "LH 3",
+          "Capacity": 60,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": "1"
+        },
+        {
+          "Id": 4,
+          "Name": "LH 4",
+          "Capacity": 24,
+          "IsLab": false,
+          "IsExaminationCenter": false,
+          "Floor": "1"
+        },
+        {
+          "Id": 5,
+          "Name": "LH 5",
+          "Capacity": 50,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": "1"
+        },
+        {
+          "Id": 6,
+          "Name": "LH 6",
+          "Capacity": 60,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": "1"
+        },
+        {
+          "Id": 7,
+          "Name": "LH 7",
+          "Capacity": 60,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": "2"
+        },
+        {
+          "Id": 8,
+          "Name": "LH 8",
+          "Capacity": 70,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": "2"
+        },
+        {
+          "Id": 9,
+          "Name": "LH 9",
+          "Capacity": 70,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": "2"
+        },
+        {
+          "Id": 10,
+          "Name": "LH 10",
+          "Capacity": 100,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": "2"
+        },
+        {
+          "Id": 11,
+          "Name": "LH 11",
+          "Capacity": 40,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": "2"
+        }
+      ]
+    },
+    {
+      "name": "Philplott",
+      "rooms": [
+        {
+          "Id": 12,
+          "Name": "ED I",
+          "Capacity": 50,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": "1"
+        },
+        {
+          "Id": 13,
+          "Name": "ED II",
+          "Capacity": 50,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": "1"
+        },
+        {
+          "Id": 14,
+          "Name": "ED III",
+          "Capacity": 50,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": "1"
+        }
+      ]
+    },
+    {
+      "name": "Mini Auditorium",
+      "rooms": [
+        {
+          "Id": 15,
+          "Name": "Mini Auditorium",
+          "Capacity": 150,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": "1"
+        }
+      ]
+    },
+    {
+      "name": "Apinto",
+      "rooms": [
+        {
+          "Id": 16,
+          "Name": "Auditorium Foyer",
+          "Capacity": 45,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": "1"
+        },
+        {
+          "Id": 17,
+          "Name": "MRT I",
+          "Capacity": 50,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": "1"
+        },
+        {
+          "Id": 18,
+          "Name": "MRT II",
+          "Capacity": 50,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": "1"
+        },
+        {
+          "Id": 19,
+          "Name": "MRT III",
+          "Capacity": 50,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": "1"
+        },
+        {
+          "Id": 20,
+          "Name": "MRT I",
+          "Capacity": 50,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": "1"
+        }
+      ]
+    },
+    {
+      "name": "Minerals department",
+      "rooms": [
+        {
+          "Id": 21,
+          "Name": "MC 2",
+          "Capacity": 70,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": "1"
+        },
+        {
+          "Id": 43,
+          "Name": "FRENCH MULTI MEDIA ROOM",
+          "Capacity": 0,
+          "IsLab": true,
+          "IsExaminationCenter": false,
+          "Floor": "2"
+        },
+        {
+          "Id": 55,
+          "Name": "MINER. ENG. LAB.",
+          "Capacity": 0,
+          "IsLab": true,
+          "IsExaminationCenter": false,
+          "Floor": ""
+        },
+        {
+          "Id": 59,
+          "Name": "MR MSc",
+          "Capacity": 60,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": ""
+        }
+      ]
+    },
+    {
+      "name": "Mining department",
+      "rooms": [
+        {
+          "Id": 22,
+          "Name": "CB 1",
+          "Capacity": 80,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": "1"
+        },
+        {
+          "Id": 23,
+          "Name": "CB 2",
+          "Capacity": 65,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": "1"
+        }
+      ]
+    },
+    {
+      "name": "Computer science and egineering department",
+      "rooms": [
+        {
+          "Id": 24,
+          "Name": "CL 1",
+          "Capacity": 60,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": "1"
+        },
+        {
+          "Id": 26,
+          "Name": "COMP ENG LAB",
+          "Capacity": 60,
+          "IsLab": true,
+          "IsExaminationCenter": false,
+          "Floor": "1"
+        },
+        {
+          "Id": 46,
+          "Name": "COMPUTER ROOM",
+          "Capacity": 0,
+          "IsLab": true,
+          "IsExaminationCenter": false,
+          "Floor": "2"
+        },
+        {
+          "Id": 47,
+          "Name": "SOFTWARE LAB",
+          "Capacity": 0,
+          "IsLab": true,
+          "IsExaminationCenter": false,
+          "Floor": "2"
+        }
+      ]
+    },
+    {
+      "name": "Petroleum department",
+      "rooms": [
+        {
+          "Id": 25,
+          "Name": "PET",
+          "Capacity": 45,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": "1"
+        },
+        {
+          "Id": 49,
+          "Name": "GIS/PET LAB",
+          "Capacity": 0,
+          "IsLab": true,
+          "IsExaminationCenter": false,
+          "Floor": "2"
+        }
+      ]
+    },
+    {
+      "name": "Geology department",
+      "rooms": [
+        {
+          "Id": 27,
+          "Name": "GE 1",
+          "Capacity": 70,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": "1"
+        },
+        {
+          "Id": 50,
+          "Name": "GEOL. LAB.",
+          "Capacity": 0,
+          "IsLab": true,
+          "IsExaminationCenter": false,
+          "Floor": "1"
+        },
+        {
+          "Id": 58,
+          "Name": "GM MSc",
+          "Capacity": 50,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": ""
+        }
+      ]
+    },
+    {
+      "name": "FMMT",
+      "rooms": [
+        {
+          "Id": 28,
+          "Name": "GF 1",
+          "Capacity": 80,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": "1"
+        },
+        {
+          "Id": 29,
+          "Name": "GF 2",
+          "Capacity": 80,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": "2"
+        },
+        {
+          "Id": 30,
+          "Name": "GF 3",
+          "Capacity": 60,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": ""
+        },
+        {
+          "Id": 31,
+          "Name": "GF 4",
+          "Capacity": 60,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": ""
+        },
+        {
+          "Id": 32,
+          "Name": "FF 1",
+          "Capacity": 80,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": ""
+        },
+        {
+          "Id": 33,
+          "Name": "FF 2",
+          "Capacity": 80,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": ""
+        },
+        {
+          "Id": 34,
+          "Name": "FF 3",
+          "Capacity": 60,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": ""
+        },
+        {
+          "Id": 35,
+          "Name": "FF 4",
+          "Capacity": 50,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": ""
+        },
+        {
+          "Id": 36,
+          "Name": "SF 1",
+          "Capacity": 80,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": ""
+        },
+        {
+          "Id": 37,
+          "Name": "SF 2",
+          "Capacity": 80,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": ""
+        }
+      ]
+    },
+    {
+      "name": "FIMS",
+      "rooms": [
+        {
+          "Id": 38,
+          "Name": "FI A1",
+          "Capacity": 80,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": ""
+        },
+        {
+          "Id": 39,
+          "Name": "FI A2",
+          "Capacity": 110,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": "2"
+        },
+        {
+          "Id": 40,
+          "Name": "FI A3",
+          "Capacity": 110,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": "3"
+        },
+        {
+          "Id": 41,
+          "Name": "FI B1",
+          "Capacity": 140,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": "1"
+        },
+        {
+          "Id": 44,
+          "Name": "MS 2",
+          "Capacity": 15,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": "1"
+        },
+        {
+          "Id": 56,
+          "Name": "FI B2",
+          "Capacity": 140,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": ""
+        },
+        {
+          "Id": 57,
+          "Name": "FI B3",
+          "Capacity": 140,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": ""
+        }
+      ]
+    },
+    {
+      "name": "Electrical department",
+      "rooms": [
+        {
+          "Id": 45,
+          "Name": "ELECT. LAB.",
+          "Capacity": 60,
+          "IsLab": true,
+          "IsExaminationCenter": false,
+          "Floor": "2"
+        }
+      ]
+    },
+    {
+      "name": "Mechanical department",
+      "rooms": [
+        {
+          "Id": 51,
+          "Name": "MECH. LAB.",
+          "Capacity": 0,
+          "IsLab": true,
+          "IsExaminationCenter": false,
+          "Floor": "2"
+        },
+        {
+          "Id": 52,
+          "Name": "MECH. WORKSHOP",
+          "Capacity": 0,
+          "IsLab": true,
+          "IsExaminationCenter": false,
+          "Floor": ""
+        }
+      ]
+    },
+    {
+      "name": "",
+      "rooms": [
+        {
+          "Id": 48,
+          "Name": "MINING LAB",
+          "Capacity": 0,
+          "IsLab": true,
+          "IsExaminationCenter": false,
+          "Floor": "2"
+        },
+        {
+          "Id": 53,
+          "Name": "FIELD WORK 1",
+          "Capacity": 0,
+          "IsLab": false,
+          "IsExaminationCenter": false,
+          "Floor": ""
+        },
+        {
+          "Id": 54,
+          "Name": "FIELD WORK 2",
+          "Capacity": 0,
+          "IsLab": false,
+          "IsExaminationCenter": false,
+          "Floor": ""
+        },
+        {
+          "Id": 1056,
+          "Name": "Main Auditorium",
+          "Capacity": 500,
+          "IsLab": false,
+          "IsExaminationCenter": true,
+          "Floor": ""
+        }
+      ]
+    }
+  ]
+}

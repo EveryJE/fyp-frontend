@@ -53,15 +53,15 @@ export default class IndoorMapLayer implements CustomLayerInterface {
     this.map = map;
 
     const lightColor = {
-      unit: "#f3f3f3",
-      unit_hovered: "#e0e0e0",
+      unit: "#b1b66dff",
+      unit_hovered: "#848f58ff",
       corridor: "#d6d5d1",
-      outline: "#a6a5a2",
+      outline: "#4fa14cff",
     };
 
     const darkColor = {
-      unit: "#1f2937",
-      unit_hovered: "#374151",
+      unit: "#5e6835ff",
+      unit_hovered: "#41462fff",
       corridor: "#030712",
       outline: "#1f2937",
     };
