@@ -49,7 +49,7 @@ const TimetableCalendar = () => {
 
 
                         <div
-                            className="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-slate-700"
+                            className="px-6 py-4 grid gap-3  border-b border-gray-200 dark:border-slate-700"
                         >
                             <div className="w-full flex-grow overflow-x-auto overflow-y-hidden">
                                 <table className="min-w-full divide-y divide-gray-200 dark:divide-slate-700">
