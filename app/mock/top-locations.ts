@@ -20,12 +20,12 @@ const topLocations = [
       "bg-emerald-100 text-emerald-700 dark:bg-emerald-700 dark:text-emerald-100",
   },
   {
-    name: "Nurse's Office",
+    name: "Adminstration",
     icon: BriefcaseMedical,
     colors: "bg-red-100 text-red-700 dark:bg-red-700 dark:text-red-100",
   },
   {
-    name: "Teachers Room",
+    name: "It Office",
     icon: Apple,
     colors:
       "bg-purple-100 text-purple-700 dark:bg-purple-700 dark:text-purple-100",

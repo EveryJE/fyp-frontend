@@ -154,6 +154,7 @@ export default function MapComponent() {
       <DiscoveryPanel />
       {process.env.NODE_ENV === "development" && (
         <>
+    
           <FloorSelector indoorMapLayer={indoorMapLayer} />
           <FloorUpDownControl indoorMapLayer={indoorMapLayer} />
         </>

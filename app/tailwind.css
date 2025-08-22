@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Federant&display=swap');
 @import 'tailwindcss';
 
 @import "preline/variants.css";
@@ -12,6 +13,7 @@
   --font-sans:
     'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-federant: "Federant", sans-serif; 
 
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);

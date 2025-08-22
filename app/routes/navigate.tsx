@@ -2,6 +2,7 @@ import type { MetaFunction } from "@remix-run/node";
 import MapComponent from "~/components/map-component";
 import { Analytics } from "@vercel/analytics/remix";
 import { useEffect, useState } from "react";
+import BlockDetails from "~/components/map-details/block-details";
 
 export const meta: MetaFunction = () => {
   return [
@@ -84,18 +85,16 @@ export default function Index() {
           data-hs-layout-splitter-vertical-group={isVertical ? "" : null}
         >
           <div
-            className="overflow-auto h-full"
+            className="overflow-auto h-full hidden sm:block flex-[0_1_0] max-w-96 sm:flex-[40_1_0]"
             data-hs-layout-splitter-item="40.0"
-            style={{ flex: '40 1 0' }}
           >
             <div className="flex items-center justify-center h-full p-3 text-gray-800 dark:text-slate-200">
-              Top
+              <BlockDetails />
             </div>
           </div>
           <div
-            className="overflow-auto h-full"
+            className="overflow-auto h-full flex-[60_1_0] sm:flex-[60_1_0]"
             data-hs-layout-splitter-item="60.0"
-            style={{ flex: '60 1 0' }}
           >
             <div className="relative h-full w-full flex items-center justify-center">
               {/* <Analytics /> */}
