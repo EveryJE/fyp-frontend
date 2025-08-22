@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from '@remix-run/react';
 import { GridPattern } from '~/components/magicui/grid-pattern';
 import { cn } from '~/lib/utils';
@@ -12,6 +12,59 @@ export default function Login() {
     const [isLoading, setIsLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [loginError, setLoginError] = useState('');
+
+    // Initialize default users on component mount
+    useEffect(() => {
+        initializeDefaultUsers();
+    }, []);
+
+    const initializeDefaultUsers = () => {
+        const existingUsers = JSON.parse(localStorage.getItem('campusUsers') || '[]');
+        
+        // Default credentials for each user type
+        const defaultUsers = [
+            {
+                id: 'admin_001',
+                firstName: 'System',
+                lastName: 'Administrator',
+                email: 'admin@campus.edu',
+                password: 'admin123',
+                userType: 'admin',
+                department: 'Administration',
+                level: null
+            },
+            {
+                id: 'student_001',
+                firstName: 'John',
+                lastName: 'Doe',
+                email: 'student@campus.edu',
+                password: 'student123',
+                userType: 'student',
+                department: 'Computer Science',
+                level: '3'
+            },
+            {
+                id: 'teacher_001',
+                firstName: 'Dr. Jane',
+                lastName: 'Smith',
+                email: 'teacher@campus.edu',
+                password: 'teacher123',
+                userType: 'teacher',
+                department: 'Computer Science',
+                level: null
+            }
+        ];
+
+        // Check if default users already exist, if not add them
+        defaultUsers.forEach(defaultUser => {
+            const userExists = existingUsers.some(user => user.email === defaultUser.email);
+            if (!userExists) {
+                existingUsers.push(defaultUser);
+            }
+        });
+
+        localStorage.setItem('campusUsers', JSON.stringify(existingUsers));
+    };
 
     const handleChange = (e) => {
         setFormData(prev => ({
@@ -80,6 +133,20 @@ export default function Login() {
         }, 1000);
     };
 
+    const fillDefaultCredentials = (userType) => {
+        const defaultCredentials = {
+            admin: { email: 'admin@campus.edu', password: 'admin123' },
+            student: { email: 'student@campus.edu', password: 'student123' },
+            teacher: { email: 'teacher@campus.edu', password: 'teacher123' }
+        };
+
+        setFormData({
+            email: defaultCredentials[userType].email,
+            password: defaultCredentials[userType].password,
+            userType: userType
+        });
+    };
+
     return (
         <div className="relative min-h-[100vh] flex items-center justify-center px-4 sm:px-6 lg:px-8">
             <GridPattern
@@ -110,13 +177,41 @@ export default function Login() {
                 </div>
                 
                 <div className="bg-white dark:bg-slate-800 rounded-lg shadow-lg p-8">
+                    {/* Quick Login Demo Buttons */}
+                    <div className="mb-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+                        <p className="text-sm font-medium text-blue-800 dark:text-blue-300 mb-2">Demo Credentials:</p>
+                        <div className="flex flex-wrap gap-2">
+                            <button
+                                type="button"
+                                onClick={() => fillDefaultCredentials('admin')}
+                                className="px-3 py-1 text-xs bg-red-100 text-red-700 rounded-full hover:bg-red-200 dark:bg-red-900/50 dark:text-red-300 dark:hover:bg-red-900/70 transition-colors"
+                            >
+                                Admin Login
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => fillDefaultCredentials('student')}
+                                className="px-3 py-1 text-xs bg-green-100 text-green-700 rounded-full hover:bg-green-200 dark:bg-green-900/50 dark:text-green-300 dark:hover:bg-green-900/70 transition-colors"
+                            >
+                                Student Login
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => fillDefaultCredentials('teacher')}
+                                className="px-3 py-1 text-xs bg-purple-100 text-purple-700 rounded-full hover:bg-purple-200 dark:bg-purple-900/50 dark:text-purple-300 dark:hover:bg-purple-900/70 transition-colors"
+                            >
+                                Teacher Login
+                            </button>
+                        </div>
+                    </div>
+
                     <form className="space-y-6" onSubmit={handleSubmit}>
                         {/* User Type Selection */}
                         <div>
                             <label className="text-sm font-medium text-gray-700 dark:text-slate-300 mb-3 block">
                                 I am a:
                             </label>
-                            <div className="flex gap-4">
+                            <div className="flex flex-wrap gap-4">
                                 <label className="flex items-center">
                                     <input
                                         type="radio"
@@ -138,6 +233,17 @@ export default function Login() {
                                         className="h-4 w-4 text-teal-600 focus:ring-teal-500 border-gray-300"
                                     />
                                     <span className="ml-2 text-sm text-gray-700 dark:text-slate-300">Teacher</span>
+                                </label>
+                                <label className="flex items-center">
+                                    <input
+                                        type="radio"
+                                        name="userType"
+                                        value="admin"
+                                        checked={formData.userType === 'admin'}
+                                        onChange={handleChange}
+                                        className="h-4 w-4 text-teal-600 focus:ring-teal-500 border-gray-300"
+                                    />
+                                    <span className="ml-2 text-sm text-gray-700 dark:text-slate-300">Admin</span>
                                 </label>
                             </div>
                         </div>
