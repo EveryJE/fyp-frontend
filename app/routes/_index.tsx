@@ -9,19 +9,12 @@ import { Link } from '@remix-run/react'
 import { useState } from "react";
 import { TypewriterEffectSmooth } from '~/components/ui/typewriter-text'
 
-
-
 export default function home() {
-
-
     const [searchQuery, setSearchQuery] = useState("");
 
     const handleSearch = () => {
-        // Placeholder for search functionality (e.g., navigate to search results or call API)
         console.log("Searching for:", searchQuery);
     };
-
-
 
     const words = [
         {
@@ -31,35 +24,26 @@ export default function home() {
             text: "Navigation",
         }
     ];
+
     return (
-        //  <div>
-        //         <GridPattern
-        //             width={30}
-        //             height={30}
-        //             x={-1}
-        //             y={-1}   
-        //             strokeDasharray={"4 2"}
-        //             className={cn(
-        //                 "[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]",
-        //                 "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12",
-        //             )}
-        //         />
-        //         <div className="dark:bg-slate-800">
-        //             {/* <Sidebar/> */}
-        //             <main className="md:ps-65 md:hs-overlay-minified:ps-13 transition-all duration-300 pb-4 h-screen flex flex-col">
-        //                 {/* <Header /> */}
-        //                 <Chatbot/>
-        //                 <div className="">
+        <div className="relative overflow-hidden h-full min-h-[100svh] grid">
+            <Chatbot/>
 
-
-        //                 </div>
-
-        //             </main>
-        //         </div>
-        //     </div>
-
-        <div className="relative overflow-hidden  h-full min-h-[100svh] grid">
-                      <Chatbot/>
+            {/* Auth buttons in top right */}
+            <div className="absolute top-4 right-4 z-50 flex gap-2">
+                <Link
+                    to="/login"
+                    className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 dark:bg-slate-800 dark:text-slate-200 dark:border-slate-600 dark:hover:bg-slate-700"
+                >
+                    Login
+                </Link>
+                <Link
+                    to="/signup"
+                    className="px-4 py-2 text-sm font-medium text-white bg-teal-600 border border-transparent rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
+                >
+                    Sign Up
+                </Link>
+            </div>
 
             <GridPattern
                 width={30}
@@ -72,20 +56,16 @@ export default function home() {
                     "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12",
                 )}
             />
-            <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 my-auto  place-self-center">
+            
+            <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 my-auto place-self-center">
                 <div className="text-center">
                     <h1 className="text-4xl sm:text-6xl font-bold text-gray-800 dark:text-slate-200">
                         Campus Navigation
-                        <div className="flex flex-col items-center justify-center  ">
-
-
-                        </div>
-
-
                     </h1>
                     <p className="mt-3 text-gray-600 dark:text-slate-400">
-                        Find your way around campus with ease.
+                        Find your way around campus with ease and access your personalized schedule.
                     </p>
+
                     <div className="mt-7 sm:mt-12 mx-auto max-w-xl relative">
                         {/* Search Input */}
                         <div className="relative z-10 flex gap-x-3 p-3 bg-white border border-gray-200 rounded-lg shadow-lg shadow-gray-100 dark:bg-slate-900 dark:border-slate-700 dark:shadow-gray-900/20">
@@ -97,7 +77,7 @@ export default function home() {
                                     type="text"
                                     id="search-campus"
                                     className="py-2.5 px-4 block w-full border-transparent rounded-lg focus:border-teal-500 focus:ring-teal-500 dark:bg-slate-900 dark:border-transparent dark:text-slate-400 dark:placeholder-slate-500 dark:focus:ring-slate-600"
-                                    placeholder="Search for a location (e.g., Mr. Sitti’s office)"
+                                    placeholder="Search for a location (e.g., Mr. Sitti's office)"
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
                                     onKeyPress={(e) => e.key === "Enter" && handleSearch()}
@@ -126,8 +106,9 @@ export default function home() {
                                 </button>
                             </div>
                         </div>
+                        
                         {/* SVG Decorations */}
-                        <div className=" md:block absolute top-0 right-0 -translate-y-12 translate-x-20">
+                        <div className="md:block absolute top-0 right-0 -translate-y-12 translate-x-20">
                             <svg
                                 className="w-16 h-auto text-teal-500"
                                 width="121"
@@ -156,7 +137,7 @@ export default function home() {
                                 />
                             </svg>
                         </div>
-                        <div className=" md:block absolute bottom-0 left-0 translate-y-10 -translate-x-32">
+                        <div className="md:block absolute bottom-0 left-0 translate-y-10 -translate-x-32">
                             <svg
                                 className="w-40 h-auto text-brown-500"
                                 width="347"
@@ -174,6 +155,7 @@ export default function home() {
                             </svg>
                         </div>
                     </div>
+                    
                     <div className="mt-10 sm:mt-20 flex flex-wrap justify-center">
                         <Link
                             to="/timetable"
@@ -194,10 +176,9 @@ export default function home() {
                                 <rect width="20" height="14" x="2" y="7" rx="2" ry="2" />
                                 <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
                             </svg>
-                          Extract  Timetable
+                            Extract Timetable
                         </Link>
-                      
-                     
+                        
                         <Link
                             to="/navigate"
                             className="m-1 py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-800 dark:border-slate-700 dark:text-white dark:hover:bg-slate-700 dark:focus:bg-slate-700"
